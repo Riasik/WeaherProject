@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        style="@style/AppTheme.AppBarOverlay"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SettingsActivity">
+
+    <TextView
+            android:id="@+id/tv_bl_units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Units"
+            android:textColor="@color/colorPrimary"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <RadioGroup
+            android:id="@+id/radio_group_units"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_bl_units"
+            android:orientation="vertical">
+        <RadioButton
+                android:id="@+id/tv_standart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:text="Standard"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"/>
+        <RadioButton
+                android:id="@+id/tv_metric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:text="Metric"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"/>
+        <RadioButton
+                android:id="@+id/tv_imperial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:text="Imperial"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"/>
+    </RadioGroup>
+
+
+    <View
+            android:id="@+id/view_line"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/radio_group_units"/>
+    <TextView
+            android:id="@+id/tv_bl_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@id/view_line"/>
+
+    <TextView
+            android:id="@+id/tv_location_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mountain View, US"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_bl_location"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"/>
+    <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_location_screen"/>
+    <Switch
+            android:id="@+id/tv_automatic_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Automatic Location"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_location"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"/>
+
+</android.support.constraint.ConstraintLayout>

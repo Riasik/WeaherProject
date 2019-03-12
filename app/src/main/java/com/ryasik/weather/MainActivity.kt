@@ -1,5 +1,6 @@
 package com.ryasik.weather
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        update.setOnClickListener { view ->
+        update.setOnClickListener {
             timeUpdate = Calendar.getInstance().getTime()
             val api = api.getWeatherList("dnipro")
             api.enqueue(object: Callback<ApiResponse> {
@@ -46,7 +47,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+//                intent.putExtra("key", value)
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
