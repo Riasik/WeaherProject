@@ -1,11 +1,16 @@
 package com.ryasik.weather
 
+import android.app.SearchManager
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
-import com.ryasik.weather.Model.ApiResponse
+import com.ryasik.weather.Model.OpenWeatherMap.ApiResponse
 import com.ryasik.weather.Rest.RestAPI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -14,10 +19,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
+
 
     private val api: RestAPI = RestAPI()
     private lateinit var timeUpdate:Date
+    private var prefs: PrefsManager? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         update.setOnClickListener {
+            prefs = PrefsManager.from(this)
             timeUpdate = Calendar.getInstance().getTime()
             val api = api.getWeatherList("dnipro")
             api.enqueue(object: Callback<ApiResponse> {
@@ -42,6 +51,14 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        val searchItem = menu.findItem(R.id.search)
+        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+        searchView.setOnQueryTextListener(this)
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(
+            ComponentName(this, MainActivity::class.java)
+        ))
+        searchView.setIconifiedByDefault(false)
         return true
     }
 
@@ -69,5 +86,15 @@ class MainActivity : AppCompatActivity() {
 
         tv_time_update_screen.text = timeUpdate.toString()
     }
+
+    override fun onQueryTextSubmit(query:String):Boolean {
+        // User pressed the searchable button
+        return false
+    }
+    override fun onQueryTextChange(newText:String):Boolean {
+        // User changed the text
+        return false
+    }
+
 }
 

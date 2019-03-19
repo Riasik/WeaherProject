@@ -1,4 +1,4 @@
-package com.ryasik.weather.Model
+package com.ryasik.weather.Model.OpenWeatherMap
 
 import com.google.gson.annotations.SerializedName
 
