@@ -34,11 +34,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SettingsActivity" />
         </activity>
-        <provider
-                android:name=".CitySuggestionProvider"
-                android:authorities="ngvl.android.demosearch.citysuggestion"
-                android:enabled="true"
-                android:exported="true"/>
+
     </application>
 
 </manifest>
